@@ -47,20 +47,21 @@
 ## 手撕代码：单链表反转
 
 ```go
-func (l *LinkedList) ReverseList() {
-	var p, q *Element
-	p = l.root.next
-	q = nil
-	for p != nil {
-		next := p.next
-		p.next = q
-		q = p
+func reverseList(head *ListNode) *ListNode {
+	var current, pre *ListNode
+	current = head
+	pre = nil
+	for current != nil {
+		next := current.Next
+		current.Next = pre
+		pre = current
 		if next == nil {
-			l.root.next = p
+			head = current
 			break
 		}
-		p = next
+		current = next
 	}
+	return head
 }
 ```
 
